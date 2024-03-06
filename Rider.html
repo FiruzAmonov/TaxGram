@@ -1,60 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rider Profile - P2P Taxi Market</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto;
-        }
-        .profile-info {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .create-profile {
-            text-align: center;
-            margin-top: 40px;
-        }
-    </style>
 </head>
-
-<body>
-    <nav class="container-fluid">
-        <ul>
-            <li><a href="index.html"">Back to Main</a></li>
-        </ul>
-        <ul>
-            <li><strong>LinkRides</strong></li>
-        </ul>
-    </nav>
-    <main class="container">
-        <div class="grid">
-            <section style="text-align: center;">
-                <h2>Rider Profile</h2>
-                <img src="https://source.unsplash.com/random/400x400?person" alt="Rider Profile" class="profile-pic">
-                <div class="profile-info">
-                    <p>Name: <strong>John Doe</strong></p>
-                    <p>Second Name: <strong>Doe</strong></p>
-                    <p>Phone Number: <strong>+123456789</strong></p>
-                </div>
-            </section>
+<body class="bg-gray-100">
+    <div class="px-4 py-2">
+        <a href="index.html" class="text-blue-600">
+            <i class="fas fa-arrow-left"></i> Back to Main
+        </a>
+    </div>
+    <div class="max-w-md mx-auto mt-10 mb-16"> <!-- Adjusted margin-bottom to avoid content being hidden by the fixed footer -->
+        <div class="text-center">
+            <h1 class="text-xl font-semibold mb-2">Rider Profile</h1>
+            <img src="https://placehold.co/150x150" alt="Placeholder image for rider profile" class="w-40 h-40 rounded-full mx-auto mb-4">
+            <div class="mb-6">
+                <p>Name: <strong>John Doe</strong></p>
+                <p>Second Name: <strong>Doe</strong></p>
+                <p>Phone Number: <strong>+123456789</strong></p>
+            </div>
         </div>
-    </main>
-    <footer class="container">
-        <div class="create-profile">
-                    <p>Set up your rider profile to start using P2P Taxi services.</p>
-                    <button class="primary" onclick="window.location.href='#';">Create New</button>
-                </div>
+    </div>
+    <footer class="fixed inset-x-0 bottom-0 py-4"> <!-- Footer fixed to the bottom -->
+        <div class="max-w-md mx-auto text-center">
+            <p>Set up your rider profile to start using P2P Taxi services.</p>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-lg mt-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" onclick="window.location.href='#';">
+                Create New
+            </button>
+        </div>
     </footer>
 </body>
-
 </html>
