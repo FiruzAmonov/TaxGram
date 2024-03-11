@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P Taxi Market</title>
+    <title>Link Rides</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --tg-theme-bg-color: #FFFFFF; /* Default white */
+            --tg-theme-text-color: #000000; /* Default black */
+            --tg-theme-link-color: #2A5885; /* Telegram link blue */
+        }
+        body {
+            font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+            background-color: var(--tg-theme-bg-color);
+            color: var(--tg-theme-text-color);
+            margin: 48px 24px;
+            padding: 0;
+        }
+
+        a, button {
+            color: var(--tg-theme-link-color);
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <div class="bg-white p-4 shadow-lg rounded-lg mx-auto mt-8 max-w-sm">
@@ -88,13 +108,38 @@
                 </button>
             </div>
         </div>
-    </div>
-</body>
+   </div>
+    <script>
+        // Ensure Telegram Web App is ready
+        Telegram.WebApp.ready();
 
-</html>
+        // Dynamic theme adaptation
+        function updateTheme() {
+            const root = document.documentElement;
+            root.style.setProperty('--tg-theme-bg-color', `#${Telegram.WebApp.themeParams.bg_color}`);
+            root.style.setProperty('--tg-theme-text-color', `#${Telegram.WebApp.themeParams.text_color}`);
+            root.style.setProperty('--tg-theme-link-color', `#${Telegram.WebApp.themeParams.link_color}`);
+        }
 
-<!-- Eruda is console for mobile browsers -->
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-<script>eruda.init();</script>
+        // Initial theme update
+        updateTheme();
+
+        // Listen for theme changes
+        Telegram.WebApp.onEvent('themeChanged', updateTheme);
+
+        // Set Main Button behavior (example)
+        Telegram.WebApp.MainButton.show();
+        Telegram.WebApp.MainButton.setText("Main Action");
+        Telegram.WebApp.MainButton.onClick(() => {
+            Telegram.WebApp.showAlert("Main Action Clicked!");
+        });
+
+        // Optionally, adjust viewport for better integration
+        Telegram.WebApp.expand();
+    </script>
+    
+    <!-- Eruda Console -->
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
 </body>
 </html>
