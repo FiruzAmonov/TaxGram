@@ -4,55 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P2P Market</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            font-family: "Arial", sans-serif;
+     <style>
+        :root {
+            --tg-theme-bg-color: #ffffff; /* Default white */
+            --tg-theme-text-color: #000000; /* Default black */
+            --tg-theme-link-color: #2A5885; /* Telegram link blue */
         }
-        .icon-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+        body {
+            font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+            background-color: var(--tg-theme-bg-color);
+            color: var(--tg-theme-text-color);
+            margin: 48px 24px;
+            padding: 0;
+        }
+
+        a, button {
+            color: var(--tg-theme-link-color);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1 class="text-2xl font-bold mb-4">P2P Market</h1>
-        <div class="grid">
-            <button class="icon-button">
-                <img src="taxi-icon.png" alt="Find Taxi"> Find Taxi
+<body class="bg-gray-100">
+    <div class="bg-white p-4 shadow-lg rounded-lg mx-auto mt-8 max-w-sm">
+        <div class="text-center">
+            <h1 class="text-2xl font-bold mb-4">P2P Market 🚕</h1>
+            <button onclick="location.href='find_taxi.html';" class="flex items-center justify-center mb-4">
+                <img src="find_taxi_icon.png" alt="Find Taxi"> <!-- Replace with actual icon -->
+                <span>Find Taxi</span>
             </button>
-            <button class="icon-button">
-                <img src="statistics-icon.png" alt="Statistics"> Statistics
+            <button onclick="location.href='statistics.html';" class="flex items-center justify-center mb-4">
+                <img src="statistics_icon.png" alt="Statistics"> <!-- Replace with actual icon -->
+                <span>Statistics</span>
             </button>
-        </div>
-        <div class="grid">
-            <button class="icon-button">
-                <img src="profile-icon.png" alt="My Profile"> My Profile
+            <button onclick="location.href='my_profile.html';" class="flex items-center justify-center mb-4">
+                <img src="my_profile_icon.png" alt="My Profile"> <!-- Replace with actual icon -->
+                <span>My Profile</span>
             </button>
-            <button class="icon-button">
-                <img src="driving-icon.png" alt="Start Driving"> Start Driving
+            <button onclick="location.href='start_driving.html';" class="flex items-center justify-center mb-4">
+                <img src="start_driving_icon.png" alt="Start Driving"> <!-- Replace with actual icon -->
+                <span>Start Driving</span>
             </button>
-        </div>
-        <div class="bg-gray-100 p-4 rounded-lg mb-6">
-            <p class="text-lg font-semibold mb-3">History</p>
-            <div class="flex justify-between items-center mb-2">
-                <div class="flex items-center">
-                    <i class="fas fa-road fa-lg text-blue-600 mr-2"></i>
-                    <p>Completed Rides</p>
+            <!-- History Section -->
+            <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                <p class="text-lg font-semibold mb-3">History</p>
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-road fa-lg text-blue-600 mr-2"></i>
+                        <p>Completed Rides</p>
+                    </div>
+                    <p class="font-bold">3</p>
                 </div>
-                <p class="font-bold">3</p>
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-times-circle fa-lg text-red-600 mr-2"></i>
+                        <p>Cancelled Rides</p>
+                    </div>
+                    <p class="font-bold">1</p>
+                </div>
             </div>
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <i class="fas fa-times-circle fa-lg text-red-600 mr-2"></i>
-                    <p>Cancelled Rides</p>
-                </div>
-                <p class="font-bold">1</p>
+            <div class="flex justify-between items-center py-2">
+                <button class="text-blue-600">
+                    <i class="fas fa-bell"></i> Notifications
+                </button>
+                <button class="text-blue-600">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </button>
             </div>
         </div>
     </div>
@@ -67,25 +85,18 @@
             root.style.setProperty('--tg-theme-text-color', `#${Telegram.WebApp.themeParams.text_color}`);
             root.style.setProperty('--tg-theme-link-color', `#${Telegram.WebApp.themeParams.link_color}`);
         }
-
-        // Initial theme update
+        
         updateTheme();
-
-        // Listen for theme changes
+        
         Telegram.WebApp.onEvent('themeChanged', updateTheme);
-
-        // Set Main Button behavior (example)
         Telegram.WebApp.MainButton.show();
         Telegram.WebApp.MainButton.setText("Main Action");
         Telegram.WebApp.MainButton.onClick(() => {
             Telegram.WebApp.showAlert("Main Action Clicked!");
         });
 
-        // Optionally, adjust viewport for better integration
         Telegram.WebApp.expand();
     </script>
-    
-    <!-- Eruda Console -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
 </body>
